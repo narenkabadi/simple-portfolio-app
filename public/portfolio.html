@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Your Portfolio</h1>
+    <!-- User information will be injected here by the script -->
+    <div id="userInfo"></div>
+
+    <h2>About Me</h2>
+    <p>
+      I am a Computer Science undergraduate specializing in the MERN stack. I enjoy
+      building REST APIs, integrating MongoDB, and creating responsive React
+      interfaces. I have strong problem‑solving skills and believe in efficient
+      full‑stack delivery. Currently I am pursuing a B.Tech in CSE at M.S. Ramaiah
+      University of Applied Sciences with a CGPA of 8.2. I am also working as a
+      Web Development Intern at SNPL LLC (Oct 14 – present), where I engineer
+      database‑centric, event‑driven interfaces with modular backend workflows and
+      reusable, SEO‑optimized UI modules.
+    </p>
+
+    <h2>Skills</h2>
+    <ul>
+      <li><strong>Languages:</strong> Python, JavaScript, HTML, CSS</li>
+      <li><strong>Frameworks:</strong> Node.js, Express.js, React.js</li>
+      <li><strong>Databases:</strong> MySQL, MongoDB (NoSQL)</li>
+      <li><strong>Tools &amp; DevOps:</strong> Git, GitHub, CI/CD</li>
+    </ul>
+
+    <h2>Projects</h2>
+    <ul>
+      <li>
+        <strong>StayEase – full‑stack booking app:</strong>
+        Designed and developed a responsive web application enabling users to book
+        resorts, cafés and other properties. Added a unique hourly booking
+        feature for coffee raves, run clubs and short events. Built with
+        HTML, CSS, JavaScript, Node.js, Express.js and MongoDB.
+        <br>
+        <a href="https://stayeasee-y6nk.onrender.com/" target="_blank">View Live Demo</a>
+      </li>
+      <li>
+        <strong>Jarvis – AI Virtual Assistant:</strong> Built an AI‑powered virtual
+        assistant using the MERN stack (MongoDB, Express.js, React.js,
+        Node.js), the Gemini API and the Web Speech API. Implemented
+        speech‑to‑text and text‑to‑speech for hands‑free interactions and
+        integrated intelligent conversational responses.
+      </li>
+      <li>
+        <strong>Crypto Financial Anomaly Detection:</strong> Developed a full
+        machine‑learning pipeline for detecting anomalies in crypto markets
+        using multi‑exchange data, social signals and NLP‑based hype modelling.
+        Combined Isolation Forest and LSTM‑AE models with SHAP for explainability
+        and built a real‑time dashboard for ranked alerts and historical logs.
+      </li>
+    </ul>
+
+    <button id="logoutBtn">Logout</button>
+  </div>
+  <script>
+    // On page load, populate the user information or redirect if not logged in
+    document.addEventListener('DOMContentLoaded', () => {
+      const stored = localStorage.getItem('user');
+      if (!stored) {
+        // If no user data, redirect to landing page
+        window.location.href = '/';
+        return;
+      }
+      const user = JSON.parse(stored);
+      const userInfo = document.getElementById('userInfo');
+      // Display name (fallback to part before @) and email
+      userInfo.innerHTML = `
+        <p><strong>Name:</strong> ${user.name || user.email.split('@')[0]}</p>
+        <p><strong>Email:</strong> ${user.email}</p>
+      `;
+
+      document.getElementById('logoutBtn').addEventListener('click', () => {
+        localStorage.removeItem('user');
+        window.location.href = '/';
+      });
+    });
+  </script>
+</body>
+</html>
