@@ -6,6 +6,195 @@
   <title>Your Portfolio</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+  <style>
+/* ======== New styles for portfolio page (modern, clean, bright) ======== */
+
+/* Header bar on portfolio and landing pages */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header .brand {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0070f3;
+  letter-spacing: 1px;
+}
+
+header #logoutBtn {
+  padding: 8px 16px;
+  background: transparent;
+  color: #0070f3;
+  border: 2px solid #0070f3;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+header #logoutBtn:hover {
+  background: #0070f3;
+  color: #ffffff;
+}
+
+/* Main wrapper for portfolio sections */
+main {
+  padding: 0;
+}
+
+section {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero section with gradient background */
+#hero {
+  background: linear-gradient(135deg, #00b4db, #0083b0);
+  color: #ffffff;
+  border-radius: 12px;
+  text-align: center;
+  padding: 100px 20px;
+}
+#hero h1 {
+  margin: 0 0 12px;
+  font-size: 36px;
+  line-height: 1.2;
+}
+#hero p {
+  margin: 0;
+  font-size: 18px;
+  opacity: 0.85;
+}
+
+/* Section headings */
+section h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #0070f3;
+  border-left: 4px solid #0070f3;
+  padding-left: 12px;
+}
+
+/* Skills section */
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.skill-item {
+  flex: 1 1 240px;
+  background: #f5f7fb;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.skill-item h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 18px;
+  color: #333;
+}
+.skill-item p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Projects section */
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.project-card {
+  flex: 1 1 280px;
+  background: #f5f7fb;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+.project-card h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 20px;
+  color: #333;
+}
+.project-card p {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: #555;
+}
+.project-card a.btn {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 10px 18px;
+  background: #0070f3;
+  color: #ffffff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+.project-card a.btn:hover {
+  background: #0059c1;
+}
+
+/* Contact section */
+#contact {
+  text-align: center;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+#contact p {
+  margin: 8px 0;
+  font-size: 16px;
+  color: #555;
+}
+#contact .contact-email {
+  font-weight: 600;
+  color: #0070f3;
+}
+
+/* Responsive adjustments for portfolio */
+@media (max-width: 600px) {
+  section {
+    padding: 40px 16px;
+  }
+  #hero h1 {
+    font-size: 28px;
+  }
+  #hero p {
+    font-size: 16px;
+  }
+  .projects-grid {
+    flex-direction: column;
+  }
+  .skill-list {
+    flex-direction: column;
+  }
+}
+</style>
 <body>
   <!-- Header with brand and logout button -->
   <header>
