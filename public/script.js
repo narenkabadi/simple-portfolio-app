@@ -32,57 +32,54 @@ document.addEventListener('DOMContentLoaded', function () {
     messageDiv.textContent = msg;
   }
 
-  // Login button handler
-  loginBtn.addEventListener('click', async () => {
+  // Login button handler using localStorage instead of serverless APIs.  When the
+  // user clicks the login button, read the entered email and password,
+  // validate that both fields are provided, then look up the user in the
+  // locally stored users array.  If the credentials match a stored user,
+  // persist the user object to localStorage under the `user` key and
+  // redirect to the portfolio page.  Otherwise display an error message.
+  loginBtn.addEventListener('click', () => {
     const email = document.getElementById('loginEmail').value.trim();
     const password = document.getElementById('loginPassword').value.trim();
     if (!email || !password) {
       showMessage('Please enter email and password');
       return;
     }
-    try {
-      const res = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
-      const data = await res.json();
-      if (res.ok && data.success) {
-        // Store user details in localStorage and redirect to portfolio page
-        localStorage.setItem('user', JSON.stringify(data.user));
-        window.location.href = '/portfolio.html';
-      } else {
-        showMessage(data.message || 'Login failed');
-      }
-    } catch (err) {
-      showMessage('Error occurred during login');
+    // Retrieve users from localStorage (empty array if not present)
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const existing = users.find((u) => u.email === email && u.password === password);
+    if (existing) {
+      // Save the current user session and go to the portfolio page
+      localStorage.setItem('user', JSON.stringify(existing));
+      window.location.href = '/portfolio.html';
+    } else {
+      showMessage('Invalid email or password');
     }
   });
 
-  // Register button handler
-  registerBtn.addEventListener('click', async () => {
+  // Register button handler using localStorage.  When the user clicks
+  // register, validate the inputs, check if the email is already
+  // registered, then add the new user to the users array.  The user's
+  // name is set to a static value ("Naren A. Kabadi") because we
+  // don't collect a name on the form.  After storing, show a success
+  // message and switch to the login tab.
+  registerBtn.addEventListener('click', () => {
     const email = document.getElementById('registerEmail').value.trim();
     const password = document.getElementById('registerPassword').value.trim();
     if (!email || !password) {
       showMessage('Please enter email and password');
       return;
     }
-    try {
-      const res = await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
-      const data = await res.json();
-      if (res.ok && data.success) {
-        showMessage('Registration successful. You can now login.', false);
-        // Optionally switch to login tab automatically after successful registration
-        setTimeout(() => loginTab.click(), 500);
-      } else {
-        showMessage(data.message || 'Registration failed');
-      }
-    } catch (err) {
-      showMessage('Error occurred during registration');
+    let users = JSON.parse(localStorage.getItem('users') || '[]');
+    if (users.some((u) => u.email === email)) {
+      showMessage('User already exists');
+      return;
     }
+    // Create new user with email, password and a static name
+    const newUser = { email, password, name: 'Naren A. Kabadi' };
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    showMessage('Registration successful. You can now login.', false);
+    setTimeout(() => loginTab.click(), 500);
   });
 });
