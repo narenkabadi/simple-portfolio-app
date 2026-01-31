@@ -227,6 +227,25 @@
       margin-right: 12px;
     }
 
+  /* Override list bullets and logout button width */
+  header #logoutBtn {
+    width: auto;
+    display: inline-block;
+  }
+
+  .skill-card ul {
+    list-style: disc;
+    padding-left: 20px;
+  }
+
+  .skill-card li {
+    position: static;
+  }
+
+  .skill-card li::before {
+    display: none;
+  }
+
     footer {
       text-align: center;
       font-size: 14px;
