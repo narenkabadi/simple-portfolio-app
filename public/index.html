@@ -3,39 +3,176 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio App – Login or Register</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Twenty20 Portfolio – Login or Register</title>
+  <!-- Import the Poppins font for a modern look -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global page styling */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f5f7fb;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+    /* Card container */
+    .card {
+      width: 95%;
+      max-width: 450px;
+      background: #ffffff;
+      margin: 40px auto;
+      padding: 40px 30px 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+    /* Brand and tagline */
+    .brand {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 700;
+      color: #e63946;
+    }
+    .tagline {
+      text-align: center;
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: #7a7a7a;
+      margin-top: 4px;
+      margin-bottom: 30px;
+    }
+    /* Tabs for login and registration */
+    .tabs {
+      display: flex;
+      border: 1px solid #e3e3e3;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 25px;
+    }
+    .tabs button {
+      flex: 1;
+      padding: 12px 0;
+      background: transparent;
+      border: none;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    .tabs button.active {
+      background: #e63946;
+      color: #fff;
+    }
+    /* Feedback message */
+    #message {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+    /* Form section visibility */
+    .form-section {
+      /* common styling can go here */
+    }
+    .hidden {
+      display: none;
+    }
+    /* Input styling */
+    .input-group {
+      margin-bottom: 20px;
+    }
+    .input-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #dcdcdc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    /* Note styling under password field */
+    .note {
+      font-size: 12px;
+      color: #6a6a6a;
+      margin-top: -12px;
+      margin-bottom: 12px;
+    }
+    /* Primary buttons */
+    .form-button {
+      width: 100%;
+      padding: 12px 18px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      background: #e63946;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .form-button:hover {
+      background: #d62828;
+    }
+    /* Slightly more margin on larger screens */
+    @media (min-width: 600px) {
+      .card {
+        margin-top: 80px;
+      }
+    }
+  </style>
 </head>
-  <body>
-  <!-- Simple header with brand -->
-  <header>
+<body>
+  <div class="card">
     <div class="brand">TWENTY20</div>
-  </header>
-  <main>
-    <div class="container">
-      <h1>Welcome to Your Portfolio</h1>
-      <!-- Tab buttons to switch between login and registration -->
-      <div class="tabs">
-        <button id="loginTab" class="active">Login</button>
-        <button id="registerTab">Register</button>
-      </div>
-      <!-- Message area for success/error feedback -->
-      <div id="message"></div>
-      <!-- Login form section -->
-      <div id="loginForm" class="form-section">
-        <input type="email" id="loginEmail" placeholder="Email" required>
-        <input type="password" id="loginPassword" placeholder="Password" required>
-        <button id="loginBtn">Login</button>
-      </div>
-      <!-- Registration form section (hidden by default) -->
-      <div id="registerForm" class="form-section hidden">
-        <input type="email" id="registerEmail" placeholder="Email" required>
-        <input type="password" id="registerPassword" placeholder="Password" required>
-        <button id="registerBtn">Register</button>
-      </div>
+    <div class="tagline">PORTFOLIO MANAGEMENT SYSTEM</div>
+    <!-- Tab buttons to switch between login and registration -->
+    <div class="tabs">
+      <button id="loginTab" class="active">Login</button>
+      <button id="registerTab">Register</button>
     </div>
-  </main>
-  <!-- Include our client‑side script to handle interaction -->
+    <!-- Message area for success/error feedback -->
+    <div id="message"></div>
+    <!-- Login form section (visible by default) -->
+    <div id="loginForm" class="form-section">
+      <div class="input-group">
+        <label for="loginEmail">Email Address</label>
+        <input type="email" id="loginEmail" placeholder="your.email@example.com" required>
+      </div>
+      <div class="input-group">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+      </div>
+      <button id="loginBtn" class="form-button">Login</button>
+    </div>
+    <!-- Registration form section (hidden by default) -->
+    <div id="registerForm" class="form-section hidden">
+      <div class="input-group">
+        <label for="registerName">Full Name</label>
+        <input type="text" id="registerName" placeholder="Enter your name" required>
+      </div>
+      <div class="input-group">
+        <label for="registerEmail">Email Address</label>
+        <input type="email" id="registerEmail" placeholder="your.email@example.com" required>
+      </div>
+      <div class="input-group">
+        <label for="registerPassword">Password</label>
+        <input type="password" id="registerPassword" placeholder="Minimum 6 characters" required>
+      </div>
+      <div class="note">Use at least 6 characters</div>
+      <div class="input-group">
+        <label for="registerConfirmPassword">Confirm Password</label>
+        <input type="password" id="registerConfirmPassword" placeholder="Re-enter password" required>
+      </div>
+      <button id="registerBtn" class="form-button">Create Account</button>
+    </div>
+  </div>
+  <!-- Include the client-side script to handle interaction -->
   <script src="script.js"></script>
 </body>
 </html>
