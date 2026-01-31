@@ -1,0 +1,17 @@
+{
+  "name": "portfolio-app",
+  "version": "1.0.0",
+  "description": "Simple portfolio web application with registration and login.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "login",
+    "registration",
+    "node"
+  ],
+  "author": "",
+  "license": "MIT"
+}
