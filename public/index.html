@@ -6,29 +6,35 @@
   <title>Portfolio App – Login or Register</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div class="container">
-    <h1>Welcome to My Portfolio App</h1>
-    <!-- Tab buttons to switch between login and registration -->
-    <div class="tabs">
-      <button id="loginTab" class="active">Login</button>
-      <button id="registerTab">Register</button>
+  <body>
+  <!-- Simple header with brand -->
+  <header>
+    <div class="brand">TWENTY20</div>
+  </header>
+  <main>
+    <div class="container">
+      <h1>Welcome to Your Portfolio</h1>
+      <!-- Tab buttons to switch between login and registration -->
+      <div class="tabs">
+        <button id="loginTab" class="active">Login</button>
+        <button id="registerTab">Register</button>
+      </div>
+      <!-- Message area for success/error feedback -->
+      <div id="message"></div>
+      <!-- Login form section -->
+      <div id="loginForm" class="form-section">
+        <input type="email" id="loginEmail" placeholder="Email" required>
+        <input type="password" id="loginPassword" placeholder="Password" required>
+        <button id="loginBtn">Login</button>
+      </div>
+      <!-- Registration form section (hidden by default) -->
+      <div id="registerForm" class="form-section hidden">
+        <input type="email" id="registerEmail" placeholder="Email" required>
+        <input type="password" id="registerPassword" placeholder="Password" required>
+        <button id="registerBtn">Register</button>
+      </div>
     </div>
-    <!-- Message area for success/error feedback -->
-    <div id="message"></div>
-    <!-- Login form section -->
-    <div id="loginForm" class="form-section">
-      <input type="email" id="loginEmail" placeholder="Email" required>
-      <input type="password" id="loginPassword" placeholder="Password" required>
-      <button id="loginBtn">Login</button>
-    </div>
-    <!-- Registration form section (hidden by default) -->
-    <div id="registerForm" class="form-section hidden">
-      <input type="email" id="registerEmail" placeholder="Email" required>
-      <input type="password" id="registerPassword" placeholder="Password" required>
-      <button id="registerBtn">Register</button>
-    </div>
-  </div>
+  </main>
   <!-- Include our client‑side script to handle interaction -->
   <script src="script.js"></script>
 </body>
